@@ -1,0 +1,72 @@
+method-1
+=========
+
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+char *rev_string(char input[])
+{
+    int n=strlen(input);
+    int i;
+    char *revstring=(char *)malloc(n*sizeof(char));
+    
+    for(i=n-1;i>=0;i--)
+    {
+        revstring[n-1-i]=input[i];
+    }
+    return revstring;
+}
+int main(int argc,char *argv[])
+{
+    if(argv==1)
+        printf("command line argument is not found...!!!");
+    else
+        printf("%s\n ",rev_string(argv[1]));
+    return 0;
+}
+
+method-2
+=========
+#include <stdio.h>
+ 
+#include <string.h>
+ 
+#include <stdlib.h>
+ 
+int main(int argc, char *argv[])
+{
+ int i,j=0;
+ int strc=0;
+ char *revstr,temp;
+ 
+ for(i=1;i<argc;i++)
+ {
+     strc+=strlen(argv[i]);
+     if(argc>i+1)
+        strc++;
+ }
+ revstr=malloc(strc);
+ int k;
+ revstr[0]='\0';
+ for(k=1;k<argc;k++)
+ {
+     strcat(revstr,argv[k]);
+     if(argv>k+1)
+        strcat(revstr," ");
+ }
+ 
+ i=0;
+ j=strlen(revstr)-1;
+ while(i<j)
+ {
+     temp=revstr[i];
+     revstr[i]=revstr[j];
+     revstr[j]=temp;
+     i++;
+     j--;
+ }
+ printf("%s\n",revstr);
+ 
+ 
+}
